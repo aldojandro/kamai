@@ -35,10 +35,8 @@ export default function Hero() {
         />
       </div>
 
-      {/* Main container */}
-      <div className="relative z-30 w-full h-full p-8">
-        {/* Header: Logo and Navigation */}
-        <div className="absolute top-8 left-8 right-8 z-20 flex items-center justify-between">
+      {/* Fixed Header: Logo and Navigation */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-black flex items-center justify-between px-8 py-4">
           {/* Logo */}
           <div>
             <Image
@@ -56,22 +54,30 @@ export default function Hero() {
             <NavigationMenuList className="gap-6">
               <NavigationMenuItem className="hidden md:block">
                 <NavigationMenuLink asChild>
-                  <Link
+                  <a
                     href="#nosotros"
-                    className="nav-link-underline text-base! text-white hover:text-yellow-400 transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible"
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                      e.preventDefault();
+                      document.getElementById('nosotros')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="nav-link-underline text-base! text-white hover:text-yellow-400 transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer"
                   >
                     Nosotros
-                  </Link>
+                  </a>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem className="hidden md:block">
                 <NavigationMenuLink asChild>
-                  <Link
+                  <a
                     href="#servicios"
-                    className="nav-link-underline text-base! text-white hover:text-yellow-400 transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible"
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                      e.preventDefault();
+                      document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="nav-link-underline text-base! text-white hover:text-yellow-400 transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer"
                   >
                     Servicios
-                  </Link>
+                  </a>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem className="hidden md:block">
@@ -92,20 +98,22 @@ export default function Hero() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-        </div>
+      </div>
 
+      {/* Main container */}
+      <div className="relative z-30 w-full h-full p-8">
         {/* Hero content */}
         <div className="relative z-10 flex items-center justify-center w-full h-full">
           <div className="flex flex-col items-center justify-center max-w-5xl mx-auto gap-4">
-            <h1 className="font-bebas-neue text-7xl leading-[0.9] md:text-9xl md:leading-26 text-white text-center">
+            <h1 className="font-archivo-black text-[40px] leading-[0.9] md:text-8xl md:leading-20 text-white text-center">
               CONVIERTE{' '}
-              <GradientText inline className="text-7xl md:text-9xl">
+              <GradientText inline className="text-[40px] md:text-8xl">
                 IA
               </GradientText>
               <br />
               EN VENTAJA<br className="md:hidden" /> OPERATIVA
             </h1>
-            <p className="text-base md:text-lg px-4 font-extralight text-gray-100 text-center">En <b>KAMAI</b> implementamos workflows y agentes de IA que generan impacto real desde el día uno.</p>
+            <p className="text-base md:text-lg px-4 font-extralight text-gray-100 text-center">En <b>KAMAI</b> implementamos workflows y agentes de IA <br className="hidden md:block" /> que generan impacto real desde el día uno.</p>
           </div>
         </div>
 

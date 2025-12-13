@@ -134,12 +134,12 @@
     font-family: var(--font-barques), serif;
   }
 
-  .font-anton {
-    font-family: var(--font-anton), sans-serif;
-  }
-
   .font-bebas-neue {
     font-family: var(--font-bebas-neue), sans-serif;
+  }
+
+  .font-archivo-black {
+    font-family: var(--font-archivo-black), sans-serif;
   }
 
   .nav-link-underline {

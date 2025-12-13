@@ -1,5 +1,6 @@
 import Hero from '@/components/hero';
 import ClientStories from '@/components/ClientStories';
+import Services from '@/components/Services';
 
 export default function Home() {
   const clientStories = [
@@ -25,10 +26,10 @@ export default function Home() {
     <>
       <Hero />
       <ClientStories
-        title="Nosotros"
-        description="Somos una agencia boutique de implementación de IA."
+        title="Los que convierten tus ideas en sistemas"
         stories={clientStories}
       />
+      <Services />
     </>
   );
 }

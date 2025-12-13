@@ -76,7 +76,7 @@ function CardWithVideo({ story }: { story: ClientStory }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative w-full h-[480px] rounded-4xl overflow-hidden transition-colors bg-gray-950">
+      <div className="relative w-full h-[480px] rounded-none overflow-hidden transition-colors bg-gray-950">
         {/* Image - hidden on hover */}
         {story.image && (
           <Image
@@ -183,7 +183,7 @@ export default function ClientStories({
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full py-16 md:py-24 px-8 md:px-12 lg:px-16 overflow-hidden">
+    <section id="nosotros" ref={sectionRef} className="relative w-full py-16 md:py-24 overflow-hidden bg-amber-50">
       {/* Top left pattern - at the extreme top left */}
       <div
         ref={topLeftPatternRef}
@@ -214,11 +214,11 @@ export default function ClientStories({
         />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 lg:gap-16 items-end">
+      <div className="max-w-6xl mx-auto p-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-8 lg:gap-16 items-end">
           {/* Left column: Title and description */}
-          <div className="lg:sticky lg:top-24 gap-4 w-full md:max-w-[320px]">
-            <h2 className="text-7xl md:text-8xl font-bebas-neue text-gray-950">
+          <div className="lg:sticky lg:top-24 gap-4 w-full md:max-w-[400px]">
+            <h2 className="font-bebas-neue font-bold text-7xl md:text-8xl leading-[0.9] md:leading-20 text-gray-950">
               {title}
             </h2>
             {description && (
