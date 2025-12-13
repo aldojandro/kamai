@@ -44,7 +44,7 @@ export default function Hero() {
             alt="Kamai Logo"
             height={24}
             width={100}
-            className="h-7 w-auto"
+            className="h-5 md:h-7 w-auto"
             priority
           />
         </div>
@@ -96,9 +96,9 @@ export default function Hero() {
         {/* Hero content */}
         <div className="relative z-10 flex items-center justify-center w-full h-full">
         <div className="flex flex-col items-center justify-center max-w-5xl mx-auto gap-4">
-          <h1 className="font-bebas-neue text-8xl leading-[0.9] md:text-9xl md:leading-26 text-white text-center">
+          <h1 className="font-bebas-neue text-7xl leading-[0.9] md:text-9xl md:leading-26 text-white text-center">
             CONVIERTE{' '}
-            <GradientText inline className="font-bebas-neue text-8xl md:text-9xl">
+            <GradientText inline className="font-bebas-neue text-7xl md:text-9xl">
               IA
             </GradientText>
             <br />
