@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kamai
 
-## Getting Started
+Proyecto Next.js configurado con React, TypeScript, Tailwind CSS y Shadcn/ui.
 
-First, run the development server:
+## 🚀 Tecnologías
+
+- **[Next.js 16](https://nextjs.org/)** - Framework React con App Router
+- **[React 19](https://react.dev/)** - Biblioteca de UI
+- **[TypeScript](https://www.typescriptlang.org/)** - Tipado estático
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Framework de CSS utility-first
+- **[Shadcn/ui](https://ui.shadcn.com/)** - Componentes UI reutilizables
+
+## 📦 Instalación
+
+Las dependencias ya están instaladas. Si necesitas reinstalarlas:
+
+```bash
+npm install
+```
+
+## 🛠️ Desarrollo
+
+Inicia el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Scripts Disponibles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm run start` - Inicia el servidor de producción
+- `npm run lint` - Ejecuta ESLint
 
-## Learn More
+## 🎨 Agregar Componentes de Shadcn/ui
 
-To learn more about Next.js, take a look at the following resources:
+Para agregar componentes de Shadcn/ui, usa el CLI:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npx shadcn@latest add [component-name]
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ejemplo:
+```bash
+npx shadcn@latest add button
+npx shadcn@latest add card
+npx shadcn@latest add dialog
+```
 
-## Deploy on Vercel
+Los componentes se agregarán en `components/ui/`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📁 Estructura del Proyecto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+kamai/
+├── app/              # App Router de Next.js
+│   ├── layout.tsx    # Layout principal
+│   ├── page.tsx      # Página principal
+│   └── globals.css   # Estilos globales con variables de Shadcn
+├── components/        # Componentes React
+│   └── ui/           # Componentes de Shadcn/ui
+├── lib/              # Utilidades
+│   └── utils.ts      # Funciones helper (cn, etc.)
+└── public/           # Archivos estáticos
+```
+
+## 🎯 Configuración
+
+- **Tailwind CSS**: Configurado con variables CSS de Shadcn/ui
+- **TypeScript**: Configurado con paths alias (`@/*`)
+- **Shadcn/ui**: Estilo "new-york", modo oscuro habilitado, usando Lucide icons
+
+## 📚 Recursos
+
+- [Documentación de Next.js](https://nextjs.org/docs)
+- [Documentación de Shadcn/ui](https://ui.shadcn.com/)
+- [Documentación de Tailwind CSS](https://tailwindcss.com/docs)
+- [Componentes de Shadcn/ui](https://ui.shadcn.com/docs/components)
+
+## 🚢 Despliegue
+
+La forma más fácil de desplegar tu aplicación Next.js es usando [Vercel Platform](https://vercel.com/new).
+
+Consulta la [documentación de despliegue de Next.js](https://nextjs.org/docs/app/building-your-application/deploying) para más detalles.
