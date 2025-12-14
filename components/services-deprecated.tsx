@@ -2,7 +2,7 @@
 
 import { Brain, Users, Rocket } from 'lucide-react';
 
-export default function ServicesNew() {
+export default function ServicesDeprecated() {
   const cards = [
     {
       title: 'Sistemas de IA',

@@ -12,7 +12,7 @@ import {
   NavigationMenuLink,
 } from '@/components/ui/navigation-menu';
 import { Button } from '@/components/ui/button';
-import GradientTextNew from '@/components/GradientTextNew';
+import GradientTextNew from '@/components/gradient-text-new';
 import TextType from '@/components/TextType';
 import RotatingText from '@/components/rotating-text';
 

@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import TextType from '@/components/TextType';
-import BlurText from '@/components/BlurText';
+import BlurText from '@/components/blur-text';
 
-export default function ScrollTransformation() {
+export default function Phrase() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -178,7 +178,7 @@ export default function ScrollTransformation() {
                   {/* @ts-expect-error - BlurText is a .jsx component with optional props that TypeScript incorrectly infers as required */}
                   <BlurText
                     text="Transformamos a tu equipo en AI-native. En 12 semanas, tus Champions crean soluciones de IA por su cuenta."
-                    className="font-hepta-slab text-[40px] leading-10 md:text-7xl md:leading-18 text-stone-950 font-normal w-full"
+                    className="font-hepta-slab text-[32px] leading-10 md:text-7xl md:leading-18 text-stone-950 font-normal w-full"
                     delay={50}
                     animateBy="words"
                   />

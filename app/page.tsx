@@ -1,6 +1,6 @@
 import Hero from '@/components/hero';
 import ClientStories from '@/components/ClientStories';
-import Services from '@/components/Services';
+import ServicesDeprecated from '@/components/services-deprecated';
 
 export default function Home() {
   const clientStories = [
@@ -29,7 +29,7 @@ export default function Home() {
         title="Los que convierten tus ideas en sistemas"
         stories={clientStories}
       />
-      <Services />
+      <ServicesDeprecated />
     </>
   );
 }

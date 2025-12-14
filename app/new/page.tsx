@@ -1,15 +1,15 @@
-import HeroNew from '@/components/heroNew';
-import ClientStoriesNew from '@/components/ClientStoriesNew';
-import ServicesNew from '@/components/ServicesNew';
-import ScrollTransformation from '@/components/ScrollTransformation';
+import HeroNew from '@/components/hero-new';
+import TheTeam from '@/components/the-team';
+import Services from '@/components/services';
+import Phrase from '@/components/phrase';
 
 export default function Home() {
   return (
     <>
       <HeroNew />
-      <ScrollTransformation />
-      <ClientStoriesNew />
-      <ServicesNew />
+      <Phrase />
+      <TheTeam />
+      <Services />
     </>
   );
 }
