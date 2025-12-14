@@ -12,6 +12,7 @@ export default function Phrase() {
   const [isComplete, setIsComplete] = useState(false);
   const [showSecondLine, setShowSecondLine] = useState(false);
   const [hasPassed, setHasPassed] = useState(false);
+  const [shouldShowText, setShouldShowText] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -28,13 +29,15 @@ export default function Phrase() {
         setScrollProgress(0);
         setIsComplete(false);
         setShowSecondLine(false);
+        setHasPassed(false);
+        setShouldShowText(false);
         return;
       }
 
       if (sectionTop + sectionHeight < 0) {
-        setScrollProgress(2.5);
+        setScrollProgress(1);
         setIsComplete(true);
-        setHasPassed(true); // La sección ha pasado completamente
+        setHasPassed(true);
         return;
       } else {
         setHasPassed(false);
@@ -43,33 +46,21 @@ export default function Phrase() {
       const scrollableDistance = sectionHeight - windowHeight;
       const scrolled = -sectionTop;
       
-      // Dividimos el scroll en 5 partes iguales del scrollableDistance:
-      // Parte 1 (0 a 1/5): scrollProgress 0 a 0.5 → rotación 0° a 360° (1 rotación completa) → texto aparece cuando scrollProgress = 0.5
-      // Parte 2-3 (1/5 a 3/5): scrollProgress 0.5 a 1.5 → rotación 360° a 720° (1 rotación adicional)
-      // Parte 4-5 (3/5 a 1): scrollProgress 1.5 a 2.5 → rotación 720° a 1080° (1 rotación adicional)
-      // 
-      // El texto aparece cuando scrollProgress >= 0.5 (después de exactamente 1 rotación = 360°)
-      const partSize = scrollableDistance / 5;
-      let progress = 0;
-      
-      if (scrolled <= partSize) {
-        // Primera parte (1/5): 1 rotación completa (0° a 360°)
-        progress = (scrolled / partSize) * 0.5; // 0 a 0.5
-      } else if (scrolled <= partSize * 3) {
-        // Segunda y tercera parte (2/5): primera rotación adicional (360° a 720°)
-        progress = 0.5 + ((scrolled - partSize) / (partSize * 2)) * 1; // 0.5 a 1.5
-      } else if (scrolled <= scrollableDistance) {
-        // Cuarta y quinta parte (2/5): segunda rotación adicional (720° a 1080°)
-        progress = 1.5 + ((scrolled - partSize * 3) / (partSize * 2)) * 1; // 1.5 a 2.5
-      } else {
-        // Scroll normal después de completar las 3 rotaciones
-        progress = 2.5;
-      }
-      progress = Math.max(0, Math.min(2.5, progress));
+      // Progreso simple de 0 a 1 mientras se hace scroll por la sección
+      const progress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
 
       setScrollProgress(progress);
 
-      if (progress >= 0.5) {
+      // El texto aparece cuando la sección entra completamente en el viewport
+      // Esto ocurre cuando la parte superior de la sección alcanza el top del viewport (sectionTop <= 0)
+      // y la sección aún está visible (sectionTop + sectionHeight > 0)
+      const isSectionFullyInViewport = sectionTop <= 0 && sectionTop + sectionHeight > 0;
+      
+      if (isSectionFullyInViewport && !shouldShowText) {
+        setShouldShowText(true);
+      }
+
+      if (progress > 0) {
         setIsComplete(true);
       } else {
         setIsComplete(false);
@@ -84,31 +75,14 @@ export default function Phrase() {
     };
   }, []);
 
-  // Rotación ajustada para que el texto aparezca después de exactamente 1 rotación visual:
-  // - scrollProgress 0 a 0.5: Primera rotación completa (0° a 360°) → texto aparece cuando scrollProgress = 0.5
-  // - scrollProgress 0.5 a 1.5: Primera rotación adicional (360° a 720°)
-  // - scrollProgress 1.5 a 2.5: Segunda rotación adicional (720° a 1080°)
-  // Total: 1080° (3 rotaciones) cuando scrollProgress = 2.5
-  // 
-  // Fórmula: cuando scrollProgress = 0.5, rotation = 360° (1 rotación completa)
-  let rotation = 0;
-  if (scrollProgress <= 0.5) {
-    // Primera rotación: 0° a 360° cuando scrollProgress va de 0 a 0.5
-    rotation = (scrollProgress / 0.5) * 360;
-  } else if (scrollProgress <= 1.5) {
-    // Primera rotación adicional: 360° a 720° cuando scrollProgress va de 0.5 a 1.5
-    rotation = 360 + ((scrollProgress - 0.5) / 1) * 360;
-  } else if (scrollProgress <= 2.5) {
-    // Segunda rotación adicional: 720° a 1080° cuando scrollProgress va de 1.5 a 2.5
-    rotation = 720 + ((scrollProgress - 1.5) / 1) * 360;
-  } else {
-    // Máximo: 1080° (3 rotaciones completas)
-    rotation = 1080;
-  }
+  // Rotación continua mientras se hace scroll
+  // scrollProgress va de 0 a 1, rotación va de 0° a 720° (2 rotaciones completas)
+  // El elemento gira continuamente mientras el usuario hace scroll
+  const rotation = scrollProgress * 720;
 
   // Control del cambio de color del background
-  // El color cambia durante la primera rotación (0 a 0.5)
-  const bgProgress = Math.min(1, scrollProgress / 0.5);
+  // El color cambia durante todo el scroll (0 a 1)
+  const bgProgress = scrollProgress;
   
   // Color inicial: blanco (255, 255, 255)
   // Color final: amarillo (255, 255, 0)
@@ -123,22 +97,21 @@ export default function Phrase() {
   const b = Math.floor(startColor.b + (endColor.b - startColor.b) * bgProgress);
   const bgColor = `rgb(${r}, ${g}, ${b})`;
   
-  // El texto aparece exactamente cuando scrollProgress = 0.5 (rotación = 360°, 1 rotación completa)
-  // Y permanece visible durante las dos rotaciones adicionales (scrollProgress 0.5 a 2.5)
-  const showText = scrollProgress >= 0.5;
-  const textOpacity = showText ? 1 : 0;
+  // El texto aparece cuando la sección entra completamente en el viewport
+  // El BlurText maneja su propia animación una vez que se renderiza
+  const showText = shouldShowText;
 
   return (
     <section
       ref={sectionRef}
       className="relative w-full"
-      style={{ height: '500vh' }}
+      style={{ height: '200vh' }}
     >
       <div
         ref={containerRef}
         className="sticky top-0 w-full h-screen flex items-start justify-center"
           style={{
-            backgroundColor: scrollProgress < 0.5 ? bgColor : `rgb(${finalColor.r}, ${finalColor.g}, ${finalColor.b})`,
+            backgroundColor: scrollProgress < 1 ? bgColor : `rgb(${finalColor.r}, ${finalColor.g}, ${finalColor.b})`,
             // Cambiar a relative solo cuando la sección haya pasado completamente
             // Esto permite scroll orgánico hacia la siguiente sección sin cortes bruscos
             position: hasPassed ? 'relative' : 'sticky',
@@ -149,7 +122,7 @@ export default function Phrase() {
             className="absolute z-10 top-40"
             style={{
               transform: `rotate(${rotation}deg)`,
-              transition: scrollProgress >= 2.5 ? 'transform 0.3s ease-out' : 'none',
+              transition: scrollProgress >= 1 ? 'transform 0.3s ease-out' : 'none',
             }}
           >
             <div className="relative">
@@ -165,9 +138,9 @@ export default function Phrase() {
 
           {showText && (
             <div
-              className="absolute inset-0 z-30 flex items-end justify-start px-8 pb-8"
+              className="absolute inset-0 z-30 flex items-end justify-start px-7 pb-8"
               style={{
-                opacity: textOpacity,
+                opacity: 1,
                 transition: 'opacity 0.8s ease-in',
               }}
             >

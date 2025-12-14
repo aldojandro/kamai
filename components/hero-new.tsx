@@ -1,41 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuLink,
-} from '@/components/ui/navigation-menu';
-import { Button } from '@/components/ui/button';
 import GradientTextNew from '@/components/gradient-text-new';
 import TextType from '@/components/TextType';
 import RotatingText from '@/components/rotating-text';
+import Header from '@/components/header';
 
 export default function HeroNew() {
-  const [hasScrolled, setHasScrolled] = useState(false);
   const [showOperativa, setShowOperativa] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check initial state
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const handleTextComplete = () => {
     setShowOperativa(true);
   };
+  
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       {/* Background image layer */}
@@ -62,72 +40,8 @@ export default function HeroNew() {
       {/* White overlay with opacity */}
       <div className="absolute inset-0 z-2 bg-white opacity-70 pointer-events-none" />
 
-      {/* Fixed Header: Logo and Navigation */}
-      <div className={`bg-transparent fixed top-0 left-0 right-0 z-50 px-7 transition-all duration-300 ${hasScrolled ? 'backdrop-blur-sm' : ''}`}>
-        <div className="flex items-center justify-between py-4 border-b border-stone-300">
-          {/* Logo */}
-          <div>
-            <Image
-              src="/logo/kamai-logo-dark.svg"
-              alt="Kamai Logo"
-              height={24}
-              width={100}
-              className="h-5 md:h-6 w-auto"
-              priority
-            />
-          </div>
-
-          {/* Navigation Menu */}
-          <NavigationMenu viewport={false}>
-            <NavigationMenuList className="gap-6">
-              <NavigationMenuItem className="hidden md:block">
-                <NavigationMenuLink asChild>
-                  <a
-                    href="#nosotros"
-                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                      e.preventDefault();
-                      document.getElementById('nosotros')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="nav-link-underline text-base! text-stone-900 hover:text-yellow-400 transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer"
-                  >
-                    Nosotros
-                  </a>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem className="hidden md:block">
-                <NavigationMenuLink asChild>
-                  <a
-                    href="#servicios"
-                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                      e.preventDefault();
-                      document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="nav-link-underline text-base! text-stone-900 hover:text-yellow-400 transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer"
-                  >
-                    Servicios
-                  </a>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem className="hidden md:block">
-                <NavigationMenuLink asChild>
-                  <Link
-                    href="#clientes"
-                    className="nav-link-underline text-base! text-stone-900 hover:text-yellow-400 transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible"
-                  >
-                    Clientes
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Button variant="default" className="text-sm md:text-base text-stone-950 bg-[#FFE700] rounded-none hover:bg-white">
-                  Conversemos
-                  <ArrowRight className="transition-transform duration-200 group-hover:translate-x-0.5" />
-                </Button>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-      </div>
+      {/* Header Component */}
+      <Header />
 
       {/* Main container */}
       <div className="relative z-30 w-full h-full p-7">

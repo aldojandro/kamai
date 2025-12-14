@@ -62,7 +62,7 @@ function CardWithVideo({ story, index }: { story: ClientStory; index: number }) 
       href={story.href || '#'}
       className="group block"
     >
-      <div ref={cardRef} className="relative w-full h-[320px] md:h-[360px] rounded-none overflow-hidden transition-colors bg-stone-200">
+      <div ref={cardRef} className="relative w-full h-[240px] md:h-[360px] rounded-none overflow-hidden transition-colors bg-stone-200">
         {/* Pattern with parallax effect */}
         <div
           ref={patternRef}
@@ -157,7 +157,7 @@ export default function TheTeam() {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
-    <section id="nosotros" ref={sectionRef} className="relative w-full py-8 md:py-16 overflow-hidden bg-black">
+    <section id="nosotros" ref={sectionRef} className="relative w-full px-7 py-16 md:py-20 space-y-12 overflow-hidden bg-black">
       {/* Grainy overlay effect */}
       <div
         className="absolute inset-0 z-1 pointer-events-none"
@@ -170,25 +170,26 @@ export default function TheTeam() {
       />
 
 
-      <div className="w-full p-4 md:p-8">
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-end justify-between">
+      <div className="w-full">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-end justify-between">
           {/* Title - aligned to left */}
           <div className="flex items-end w-full md:w-auto">
-            <h2 className="font-hepta-slab font-normal text-5xl md:text-8xl leading-[0.9] md:leading-20 text-[#FFE700]">
+            <h2 className="font-hepta-slab font-normal text-5xl md:text-8xl leading-[0.9] md:leading-20 text-white">
               El equipo
             </h2>
           </div>
           {/* Description - aligned to right, below title on mobile */}
           <div className="flex items-end justify-end w-full md:w-auto">
             <p className="font-hepta-slab text-base md:text-lg text-gray-300 text-right max-w-2xl">
-              Somos dos founders que trabajan directamente en cada proyecto. No hay capas de gerentes, no hay juniors aprendiendo con tu presupuesto. Quienes diseñan son quienes ejecutan.
+              Somos dos founders que trabajan directamente en cada proyecto. No hay capas de gerentes, no hay juniors aprendiendo con tu presupuesto.{' '}
+              <span className="bg-[#FFE700] text-black px-1">Quienes diseñan son quienes ejecutan.</span>
             </p>
           </div>
         </div>
       </div>
 
       {/* Cards - Full width */}
-      <div className="w-full px-8 pb-8">
+      <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 relative w-full">
           {clientStories.slice(0, 2).map((story, index) => (
             <CardWithVideo key={story.id} story={story} index={index} />
