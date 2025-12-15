@@ -157,7 +157,7 @@ export default function TheTeam() {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
-    <section id="nosotros" ref={sectionRef} className="relative w-full px-7 py-16 md:py-20 space-y-12 overflow-hidden bg-black">
+    <section id="nosotros" ref={sectionRef} className="relative w-full px-7 py-16 md:py-30 space-y-12 overflow-hidden bg-black">
       {/* Grainy overlay effect */}
       <div
         className="absolute inset-0 z-1 pointer-events-none"
@@ -180,8 +180,8 @@ export default function TheTeam() {
           </div>
           {/* Description - aligned to right, below title on mobile */}
           <div className="flex items-end justify-end w-full md:w-auto">
-            <p className="font-hepta-slab text-base md:text-lg text-gray-300 text-right max-w-2xl">
-              Somos dos founders que trabajan directamente en cada proyecto. No hay capas de gerentes, no hay juniors aprendiendo con tu presupuesto.{' '}
+            <p className="font-hepta-slab text-base md:text-lg text-gray-300 text-right max-w-3xl">
+              Somos dos founders que trabajan directamente en cada proyecto. <br />Sin capas de gerentes ni juniors.{' '}
               <span className="bg-amber-200 text-black font-medium px-1">Quienes diseñan son quienes ejecutan.</span>
             </p>
           </div>
