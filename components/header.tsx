@@ -84,20 +84,6 @@ export default function Header() {
             <NavigationMenuItem className="hidden md:block">
               <NavigationMenuLink asChild>
                 <a
-                  href="#nosotros"
-                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                    e.preventDefault();
-                    document.getElementById('nosotros')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className={`font-hepta-slab nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer`}
-                >
-                  Nosotros
-                </a>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem className="hidden md:block">
-              <NavigationMenuLink asChild>
-                <a
                   href="#servicios"
                   onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                     e.preventDefault();
@@ -106,6 +92,20 @@ export default function Header() {
                   className={`font-hepta-slab nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer`}
                 >
                   Servicios
+                </a>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem className="hidden md:block">
+              <NavigationMenuLink asChild>
+                <a
+                  href="#nosotros"
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.preventDefault();
+                    document.getElementById('nosotros')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`font-hepta-slab nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer`}
+                >
+                  Equipo
                 </a>
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -120,7 +120,14 @@ export default function Header() {
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Button variant="default" className="font-hepta-slab text-sm md:text-base text-stone-950 bg-[#FFE700] rounded-none hover:bg-white">
+              <Button 
+                variant="default" 
+                className="font-hepta-slab text-sm md:text-base text-stone-950 bg-[#FFE700] rounded-none hover:bg-white cursor-pointer"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Conversemos
                 <ArrowRight className="transition-transform duration-200 group-hover:translate-x-0.5" />
               </Button>

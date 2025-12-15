@@ -31,7 +31,7 @@ function GridItemList({ title, items }: { title: string; items: string[] }) {
         {title}
       </h4>
       <div className="flex-1 text-right md:text-left w-full">
-        <ul className="space-y-3">
+        <ul className="space-y-2">
           {items.map((item, itemIndex) => {
             const isFlipped = itemIndex % 2 === 1; // Alternate: odd indices are flipped
             return (
@@ -60,17 +60,17 @@ function GridItemList({ title, items }: { title: string; items: string[] }) {
 export default function Services() {
   const services = [
     {
-      title: 'formar',
+      title: '1. formar',
       intro: 'Formamos líderes que continúan sin depender de nosotros.',
       phases: [
         {
           name: 'Fase 1: Mythbusters',
-          description: 'Qué sí, qué no y cómo usar IA de forma segura.',
+          description: 'Cómo usar IA de forma segura.',
           duration: '2 semanas',
         },
         {
           name: 'Fase 2: Discovery',
-          description: 'Mapeo de procesos y foco en alto impacto.',
+          description: 'Mapeo de procesos con alto impacto.',
           duration: '4 semanas',
         },
         {
@@ -82,19 +82,17 @@ export default function Services() {
       resultado: 'Champions internos capaces de crear y mantener IA en la operación.',
     },
     {
-      title: 'implementar',
+      title: '2. implementar',
       intro: 'Creamos workflows y agentes de IA integrados a tus procesos.',
       comoFunciona: [
         'Entendemos tus procesos',
         'Diseñamos soluciones de IA',
         'Construimos e integramos',
-        'Medimos y ajustamos',
       ],
       tiposSoluciones: [
         'Agentes conversacionales',
         'Automatización de workflows',
         'Análisis de datos',
-        'Integraciones',
       ],
       resultado: 'Tienes sistemas de IA funcionando en producción, integrados a tus procesos reales.',
     },
@@ -128,7 +126,7 @@ export default function Services() {
             >
               {/* Content */}
               <div className="relative z-30 w-full h-full flex items-center px-7 overflow-y-auto">
-                <div className="flex flex-col md:flex-row gap-8 md:gap-40 w-full md:items-start">
+                <div className="flex flex-col md:flex-row gap-15 md:gap-40 w-full md:items-start">
                   {/* Left Column: Title and Intro (400px fixed) */}
                   <div className="w-full md:w-xl shrink-0 md:self-start">
                     {/* Title */}

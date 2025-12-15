@@ -214,6 +214,13 @@
   .animate-marquee {
     animation: marquee 60s linear infinite;
   }
+
+  .logo-marquee {
+    height: 320px !important;
+    width: auto !important;
+    max-height: none !important;
+    max-width: none !important;
+  }
 }
 
 
