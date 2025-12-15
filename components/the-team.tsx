@@ -174,7 +174,7 @@ export default function TheTeam() {
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-end justify-between">
           {/* Title - aligned to left */}
           <div className="flex items-end w-full md:w-auto">
-            <h2 className="font-hepta-slab font-normal text-5xl md:text-8xl leading-[0.9] md:leading-20 text-white">
+            <h2 className="font-hepta-slab font-normal text-5xl md:text-7xl leading-[0.9] md:leading-16 text-white">
               El equipo
             </h2>
           </div>
@@ -182,7 +182,7 @@ export default function TheTeam() {
           <div className="flex items-end justify-end w-full md:w-auto">
             <p className="font-hepta-slab text-base md:text-lg text-gray-300 text-right max-w-2xl">
               Somos dos founders que trabajan directamente en cada proyecto. No hay capas de gerentes, no hay juniors aprendiendo con tu presupuesto.{' '}
-              <span className="bg-[#FFE700] text-black px-1">Quienes diseñan son quienes ejecutan.</span>
+              <span className="bg-amber-200 text-black font-medium px-1">Quienes diseñan son quienes ejecutan.</span>
             </p>
           </div>
         </div>

@@ -46,7 +46,7 @@ export default function HeroNew() {
       {/* Main container */}
       <div className="relative z-30 w-full h-full p-7">
         {/* Hero content */}
-        <div className="relative flex max-w-5xl mx-auto h-full">
+        <div className="relative flex max-w-4xl mx-auto h-full">
           <div className="flex flex-col justify-center gap-6 w-full">
             <div className="flex flex-col justify-between w-full gap-4 md:gap-8">
               <div className="w-full text-left">
@@ -59,8 +59,8 @@ export default function HeroNew() {
                     className="w-20 md:w-30 h-auto"
                   />
                 </div>
-                <h1 className="font-hepta-slab font-normal text-5xl leading-[0.9] md:text-8xl md:leading-20 text-stone-950 max-w-4xl">
-                  Convierte la IA en una ventaja
+                <h1 className="font-hepta-slab font-normal text-5xl leading-[0.9] md:text-7xl md:leading-16 text-stone-950 max-w-3xl">
+                  Convierte la IA <br className="hidden md:block" /> en una ventaja
                 </h1>
               </div>
 
@@ -71,7 +71,7 @@ export default function HeroNew() {
                 <div className="w-full md:w-auto text-right order-1 md:order-2">
                   <RotatingText
                     texts={['operativa', 'rentable', 'escalable']}
-                    mainClassName="font-hepta-slab font-medium text-5xl leading-[0.9] md:text-8xl md:leading-20 px-2 bg-stone-950 text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-none inline-flex"
+                    mainClassName="font-hepta-slab font-medium text-5xl leading-[0.9] md:text-7xl md:leading-16 px-2 bg-stone-950 text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-none inline-flex"
                     staggerFrom={"last"}
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}

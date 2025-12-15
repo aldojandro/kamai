@@ -3,18 +3,18 @@
 import Image from 'next/image';
 
 // Subcomponente para items del grid (fases y resultado)
-function GridItem({ title, description, duration }: { title: string; description: string; duration?: string }) {
+function GridItem({ title, description, duration, className }: { title: string; description: string; duration?: string; className?: string }) {
   return (
-    <div className="flex flex-col items-end md:items-start gap-2">
+    <div className={`flex flex-col items-end md:items-start gap-2 ${className || ''}`}>
       <h4 className="font-hepta-slab text-base md:text-lg font-semibold text-stone-100 shrink-0 uppercase w-full md:w-40 text-right md:text-left">
         {title}
       </h4>
       <div className="flex-1 text-right md:text-left w-full">
-        <p className={`font-hepta-slab text-sm text-stone-300 font-normal ${duration ? 'mb-2' : ''}`}>
+        <p className={`font-hepta-slab text-sm text-stone-200 font-normal ${duration ? 'mb-2' : ''}`}>
           {description}
         </p>
         {duration && (
-          <span className="font-hepta-slab text-sm text-amber-200 uppercase">
+          <span className="hidden md:inline font-hepta-slab text-sm text-amber-200 uppercase">
             {duration}
           </span>
         )}
@@ -32,14 +32,25 @@ function GridItemList({ title, items }: { title: string; items: string[] }) {
       </h4>
       <div className="flex-1 text-right md:text-left w-full">
         <ul className="space-y-2">
-          {items.map((item, itemIndex) => (
-            <li key={itemIndex} className="flex items-start gap-2 justify-end md:justify-start">
-              <span className="font-hepta-slab text-stone-300 mt-0.5 order-2 md:order-1">•</span>
-              <span className="font-hepta-slab text-sm text-stone-300 font-normal flex-1 order-1 md:order-2">
-                {item}
-              </span>
-            </li>
-          ))}
+          {items.map((item, itemIndex) => {
+            const isFlipped = itemIndex % 2 === 1; // Alternate: odd indices are flipped
+            return (
+              <li key={itemIndex} className="flex items-start gap-2 justify-end md:justify-start">
+                <div className={`mt-0.5 order-2 md:order-1 ${isFlipped ? 'scale-y-[-1]' : ''}`}>
+                  <Image
+                    src="/illustration/kamain-form.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                </div>
+                <span className="font-hepta-slab text-sm text-stone-300 font-normal flex-1 order-1 md:order-2">
+                  {item}
+                </span>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
@@ -94,7 +105,7 @@ export default function Services() {
       {/* Title - scrolls away normally */}
       <div className="pt-16 md:pt-24 px-7">
         <div className="w-full mx-auto">
-          <h2 className="font-hepta-slab font-medium text-5xl md:text-8xl leading-[0.9] md:leading-20 text-stone-950 -mb-2">
+          <h2 className="font-hepta-slab font-semibold text-5xl md:text-7xl leading-[0.9] md:leading-16 text-stone-950 -mb-2">
             Servicios
           </h2>
         </div>
@@ -144,10 +155,10 @@ export default function Services() {
               <div className="absolute inset-0 z-2 bg-black opacity-80 pointer-events-none" />
 
               {/* Content */}
-              <div className="relative z-30 w-full h-full flex md:items-center px-7 overflow-y-auto py-10 md:py-0">
-                <div className="flex flex-col md:flex-row gap-8 w-full">
+              <div className="relative z-30 w-full h-full flex items-center px-7 overflow-y-auto">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-40 w-full">
                   {/* Left Column: Title and Intro (400px fixed) */}
-                  <div className="w-full md:w-[400px] shrink-0">
+                  <div className="w-full md:w-lg shrink-0">
                     {/* Title */}
                     <div className="mb-4">
                       <h3 className="font-hepta-slab font-semibold text-4xl md:text-6xl leading-[0.9] md:leading-20 text-stone-950 mb-2">
@@ -164,11 +175,11 @@ export default function Services() {
                   </div>
 
                   {/* Right Column: Service Details (flex-1) */}
-                  <div className="flex-1 w-full max-w-[320px] md:max-w-none ml-auto md:ml-0">
+                  <div className="flex-1 w-full ml-auto md:ml-0">
                     {/* Formaciones: Grid Layout (Service 1 only) */}
                     {service.phases && index === 0 && (
                       <div className="mb-8 md:mb-12">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                           <GridItem
                             title={service.phases[0].name}
                             description={service.phases[0].description}
@@ -187,6 +198,7 @@ export default function Services() {
                           <GridItem
                             title="Resultado"
                             description={service.resultado}
+                            className="hidden md:block"
                           />
                         </div>
                       </div>
@@ -213,7 +225,7 @@ export default function Services() {
                     {/* Implementaciones: Grid Layout (Service 2 only) */}
                     {service.comoFunciona && index === 1 && (
                       <div className="mb-8 md:mb-12">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                           <GridItemList
                             title="Cómo funciona"
                             items={service.comoFunciona}
@@ -222,7 +234,7 @@ export default function Services() {
                             title="Tipos de soluciones"
                             items={service.tiposSoluciones}
                           />
-                          <div className="md:col-span-2">
+                          <div className="hidden md:block md:col-span-2">
                             <GridItem
                               title="Resultado"
                               description={service.resultado}

@@ -151,7 +151,7 @@ export default function Phrase() {
                   {/* @ts-expect-error - BlurText is a .jsx component with optional props that TypeScript incorrectly infers as required */}
                   <BlurText
                     text="Transformamos a tu equipo en AI-native. En 12 semanas, tus Champions crean soluciones de IA por su cuenta."
-                    className="font-hepta-slab text-[32px] leading-10 md:text-6xl md:leading-16 text-stone-950 font-normal w-full"
+                    className="font-hepta-slab text-[32px] leading-10 md:text-5xl md:leading-12 text-stone-950 font-normal w-full"
                     delay={50}
                     animateBy="words"
                   />

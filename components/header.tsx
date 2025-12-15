@@ -89,7 +89,7 @@ export default function Header() {
                     e.preventDefault();
                     document.getElementById('nosotros')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className={`nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer`}
+                  className={`font-hepta-slab nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer`}
                 >
                   Nosotros
                 </a>
@@ -103,7 +103,7 @@ export default function Header() {
                     e.preventDefault();
                     document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className={`nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer`}
+                  className={`font-hepta-slab nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer`}
                 >
                   Servicios
                 </a>
@@ -113,14 +113,14 @@ export default function Header() {
               <NavigationMenuLink asChild>
                 <Link
                   href="#clientes"
-                  className={`nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible`}
+                  className={`font-hepta-slab nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible`}
                 >
                   Clientes
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Button variant="default" className="text-sm md:text-base text-stone-950 bg-[#FFE700] rounded-none hover:bg-white">
+              <Button variant="default" className="font-hepta-slab text-sm md:text-base text-stone-950 bg-[#FFE700] rounded-none hover:bg-white">
                 Conversemos
                 <ArrowRight className="transition-transform duration-200 group-hover:translate-x-0.5" />
               </Button>
