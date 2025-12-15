@@ -138,7 +138,7 @@ export default function Phrase() {
 
           {showText && (
             <div
-              className="absolute inset-0 z-30 flex items-end justify-start px-7 pb-8"
+              className="absolute inset-0 z-30 flex items-end justify-start px-7 pb-15"
               style={{
                 opacity: 1,
                 transition: 'opacity 0.8s ease-in',
@@ -151,7 +151,7 @@ export default function Phrase() {
                   {/* @ts-expect-error - BlurText is a .jsx component with optional props that TypeScript incorrectly infers as required */}
                   <BlurText
                     text="Transformamos a tu equipo en AI-native. En 12 semanas, tus Champions crean soluciones de IA por su cuenta."
-                    className="font-hepta-slab text-[32px] leading-10 md:text-7xl md:leading-18 text-stone-950 font-normal w-full"
+                    className="font-hepta-slab text-[32px] leading-10 md:text-6xl md:leading-16 text-stone-950 font-normal w-full"
                     delay={50}
                     animateBy="words"
                   />

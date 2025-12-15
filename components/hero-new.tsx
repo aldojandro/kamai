@@ -46,9 +46,9 @@ export default function HeroNew() {
       {/* Main container */}
       <div className="relative z-30 w-full h-full p-7">
         {/* Hero content */}
-        <div className="relative flex w-full h-full">
+        <div className="relative flex max-w-5xl mx-auto h-full">
           <div className="flex flex-col justify-center gap-6 w-full">
-            <div className="flex flex-col justify-between w-full gap-4">
+            <div className="flex flex-col justify-between w-full gap-4 md:gap-8">
               <div className="w-full text-left">
                 <div className="mb-6">
                   <Image

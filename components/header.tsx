@@ -15,10 +15,24 @@ import { Button } from '@/components/ui/button';
 export default function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOverTheTeam, setIsOverTheTeam] = useState(false);
+  const [isOverServices, setIsOverServices] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 0);
+
+      // Check if header is over Services section (when Services sticky items are at top)
+      const servicesSection = document.getElementById('servicios');
+      if (servicesSection) {
+        const servicesRect = servicesSection.getBoundingClientRect();
+        // Check if Services section has reached the top of viewport
+        // This happens when the sticky services are at top: 0
+        // The section top is at or above viewport top, and still visible
+        const isServicesAtTop = servicesRect.top <= 0 && servicesRect.bottom > 0;
+        setIsOverServices(isServicesAtTop);
+      } else {
+        setIsOverServices(false);
+      }
 
       // Check if header is over the-team section
       const theTeamSection = document.getElementById('nosotros');
@@ -43,9 +57,11 @@ export default function Header() {
     };
   }, []);
 
-  const textColorClass = isOverTheTeam ? 'text-white' : 'text-stone-900';
-  const borderColorClass = isOverTheTeam ? 'border-white/30' : 'border-stone-300';
-  const hoverColorClass = isOverTheTeam ? 'hover:text-yellow-400' : 'hover:text-yellow-400';
+  // Header changes to white when over Services (at top) or over the-team
+  const shouldBeWhite = isOverServices || isOverTheTeam;
+  const textColorClass = shouldBeWhite ? 'text-white' : 'text-stone-900';
+  const borderColorClass = shouldBeWhite ? 'border-white/30' : 'border-stone-300';
+  const hoverColorClass = shouldBeWhite ? 'hover:text-yellow-400' : 'hover:text-yellow-400';
 
   return (
     <div className={`bg-transparent fixed top-0 left-0 right-0 z-50 px-7 transition-all duration-300 ${hasScrolled ? 'backdrop-blur-sm' : ''}`}>
@@ -57,7 +73,7 @@ export default function Header() {
             alt="Kamai Logo"
             height={24}
             width={100}
-            className={`h-5 md:h-6 w-auto transition-all duration-300 ${isOverTheTeam ? 'brightness-0 invert' : ''}`}
+            className={`h-5 md:h-6 w-auto transition-all duration-300 ${shouldBeWhite ? 'brightness-0 invert' : ''}`}
             priority
           />
         </div>

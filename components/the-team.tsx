@@ -120,8 +120,8 @@ function CardWithVideo({ story, index }: { story: ClientStory; index: number }) 
               background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.05) 80%, transparent 100%)'
             }}
           />
-          <div className="relative w-full px-5 md:px-6 py-8">
-            <h3 className="font-hepta-slab text-lg md:text-xl font-semibold text-white mb-1">
+          <div className="relative w-full px-5 md:px-6 py-5 md:py-8">
+            <h3 className="font-hepta-slab text-lg md:text-xl font-semibold text-white">
               {story.clientName}
             </h3>
             <span className="font-hepta-slab text-xs md:text-sm text-gray-300">
