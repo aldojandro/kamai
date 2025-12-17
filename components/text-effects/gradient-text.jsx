@@ -1,4 +1,4 @@
-export default function GradientTextNew({
+export default function GradientText({
   children,
   className = '',
   colors = ['#ffaa40', '#FFE700', '#ffaa40'],

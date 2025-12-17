@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import Particles from './Particles';
+import Particles from './particles';
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -11,7 +11,7 @@ import {
   NavigationMenuLink,
 } from '@/components/ui/navigation-menu';
 import { Button } from '@/components/ui/button';
-import GradientText from '@/components/GradientText';
+import GradientText from './gradient-text';
 
 export default function Hero() {
   return (

@@ -1,32 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat, Geist_Mono, Bebas_Neue, Archivo_Black, Syne, Lora, Hepta_Slab } from "next/font/google";
+import { Montserrat, Geist_Mono, Hepta_Slab } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
-  subsets: ["latin"],
-});
-
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas-neue",
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-const archivoBlack = Archivo_Black({
-  variable: "--font-archivo-black",
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-});
-
-const lora = Lora({
-  variable: "--font-lora",
   subsets: ["latin"],
 });
 
@@ -72,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${geistMono.variable} ${barques.variable} ${bebasNeue.variable} ${archivoBlack.variable} ${syne.variable} ${lora.variable} ${heptaSlab.variable} antialiased`}
+        className={`${montserrat.variable} ${geistMono.variable} ${barques.variable} ${heptaSlab.variable} antialiased`}
       >
         {children}
       </body>

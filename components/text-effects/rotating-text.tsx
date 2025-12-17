@@ -8,10 +8,7 @@ import {
   type TargetAndTransition
 } from 'motion/react';
 
-function cn(...classes: (string | undefined | null | boolean)[]): string {
-  return classes.filter(Boolean).join(' ');
-}
-
+// Type Definitions
 export interface RotatingTextRef {
   next: () => void;
   previous: () => void;
@@ -234,3 +231,8 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
 
 RotatingText.displayName = 'RotatingText';
 export default RotatingText;
+
+// Helper Functions
+function cn(...classes: (string | undefined | null | boolean)[]): string {
+  return classes.filter(Boolean).join(' ');
+}

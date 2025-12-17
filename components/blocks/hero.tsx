@@ -1,28 +1,17 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
-import GradientTextNew from '@/components/gradient-text-new';
-import TextType from '@/components/TextType';
-import RotatingText from '@/components/rotating-text';
-import Header from '@/components/header';
+import RotatingText from '@/components/text-effects/rotating-text';
+import Header from './header';
 
-export default function HeroNew() {
-  const [showOperativa, setShowOperativa] = useState(false);
-
-  const handleTextComplete = () => {
-    setShowOperativa(true);
-  };
-  
+export default function Hero() {
   return (
     <div className="relative w-screen h-screen overflow-hidden">
+      {/* Background layers - bottom to top */}
       {/* Background image layer */}
       <div className="absolute inset-0 z-0">
-        {/* Add your background image here */}
         <div className="absolute inset-0 bg-stone-950">
           <Image src="/photos/temporary-photo-montain.avif" alt="" fill className="object-cover grayscale" />
-          {/* Placeholder for background image - replace with your image */}
-          {/* <Image src="/your-image.jpg" alt="" fill className="object-cover" /> */}
         </div>
       </div>
 
@@ -40,15 +29,15 @@ export default function HeroNew() {
       {/* White overlay with opacity */}
       <div className="absolute inset-0 z-2 bg-white opacity-70 pointer-events-none" />
 
-      {/* Header Component */}
+      {/* Header Component - appears at top */}
       <Header />
 
-      {/* Main container */}
+      {/* Main content container */}
       <div className="relative z-30 w-full h-full p-7">
-        {/* Hero content */}
         <div className="relative flex max-w-4xl mx-auto h-full">
           <div className="flex flex-col justify-center gap-6 w-full">
             <div className="flex flex-col justify-between w-full gap-4 md:gap-8">
+              {/* Top section: Pattern and Title */}
               <div className="w-full text-left">
                 <div className="mb-6">
                   <Image
@@ -64,6 +53,7 @@ export default function HeroNew() {
                 </h1>
               </div>
 
+              {/* Bottom section: Description and Rotating Text */}
               <div className="w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-10 md:gap-4">
                 <p className="font-hepta-slab text-base md:text-xl font-normal tracking-wide text-stone-700 w-full md:w-auto text-left order-2 md:order-1">
                   Formamos equipos que dominan IA. <br /> Desarrollamos soluciones que funcionan.
@@ -93,10 +83,8 @@ export default function HeroNew() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   );

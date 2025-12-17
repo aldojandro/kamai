@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import {
   NavigationMenu,
@@ -13,10 +12,12 @@ import {
 import { Button } from '@/components/ui/button';
 
 export default function Header() {
+  // State
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOverTheTeam, setIsOverTheTeam] = useState(false);
   const [isOverServices, setIsOverServices] = useState(false);
 
+  // Scroll detection and color change logic
   useEffect(() => {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 0);
@@ -57,16 +58,17 @@ export default function Header() {
     };
   }, []);
 
+  // Calculated color classes based on scroll position
   // Header changes to white when over Services (at top) or over the-team
   const shouldBeWhite = isOverServices || isOverTheTeam;
   const textColorClass = shouldBeWhite ? 'text-white' : 'text-stone-900';
   const borderColorClass = shouldBeWhite ? 'border-white/30' : 'border-stone-300';
-  const hoverColorClass = shouldBeWhite ? 'hover:text-yellow-400' : 'hover:text-yellow-400';
+  const hoverColorClass = 'hover:text-yellow-400';
 
   return (
     <div className={`bg-transparent fixed top-0 left-0 right-0 z-50 px-7 transition-all duration-300 ${hasScrolled ? 'backdrop-blur-sm' : ''}`}>
       <div className={`flex items-center justify-between py-4 border-b ${borderColorClass}`}>
-        {/* Logo */}
+        {/* Logo - appears on left */}
         <div>
           <Image
             src="/logo/kamai-logo-dark.svg"
@@ -78,7 +80,7 @@ export default function Header() {
           />
         </div>
 
-        {/* Navigation Menu */}
+        {/* Navigation Menu - appears in center */}
         <NavigationMenu viewport={false}>
           <NavigationMenuList className="gap-6">
             <NavigationMenuItem className="hidden md:block">
@@ -98,6 +100,20 @@ export default function Header() {
             <NavigationMenuItem className="hidden md:block">
               <NavigationMenuLink asChild>
                 <a
+                  href="#valores"
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.preventDefault();
+                    document.getElementById('valores')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`font-hepta-slab nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible cursor-pointer`}
+                >
+                  Valores
+                </a>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem className="hidden md:block">
+              <NavigationMenuLink asChild>
+                <a
                   href="#nosotros"
                   onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                     e.preventDefault();
@@ -109,20 +125,11 @@ export default function Header() {
                 </a>
               </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem className="hidden md:block">
-              <NavigationMenuLink asChild>
-                <Link
-                  href="#clientes"
-                  className={`font-hepta-slab nav-link-underline text-base! ${textColorClass} ${hoverColorClass} transition-colors px-4 py-2 rounded-md hover:bg-transparent overflow-visible`}
-                >
-                  Clientes
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            {/* Button - appears on right */}
             <NavigationMenuItem>
               <Button 
                 variant="default" 
-                className="font-hepta-slab text-sm md:text-base text-stone-950 bg-[#FFE700] rounded-none hover:bg-white cursor-pointer"
+                className="font-hepta-slab text-sm md:text-base text-stone-950 bg-[#FFE700] rounded-full hover:bg-white cursor-pointer"
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
                   document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });

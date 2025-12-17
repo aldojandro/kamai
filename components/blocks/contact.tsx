@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 
-export default function Contacto() {
+export default function Contact() {
   return (
     <section id="contacto" className="relative w-full bg-black">
-      {/* Top block - Contact info */}
+      {/* Contact information section - appears first */}
       <div className="px-7 py-16 md:py-24">
         <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-8 md:gap-12">
           {/* Title */}
@@ -33,22 +33,21 @@ export default function Contacto() {
         </div>
       </div>
 
-      {/* Logo section */}
+      {/* Logo section - appears at bottom */}
       <div className="relative w-full flex flex-row justify-center items-center gap-10">
         <div className="flex justify-center items-center opacity-20">
-            <img
-              src="/logo/kamai-logo-dark.svg"
-              alt="Kamai Logo"
-              style={{ 
-                height: 'auto', 
-                width: '100%',
-                maxWidth: '800px',
-                filter: 'brightness(0) invert(1)',
-              }}
-            />
+          <img
+            src="/logo/kamai-logo-dark.svg"
+            alt="Kamai Logo"
+            style={{ 
+              height: 'auto', 
+              width: '100%',
+              maxWidth: '800px',
+              filter: 'brightness(0) invert(1)',
+            }}
+          />
         </div>
       </div>
-
     </section>
   );
 }
