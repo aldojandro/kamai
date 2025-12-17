@@ -70,7 +70,7 @@ export default function Services() {
                           variant="outline"
                           size="lg"
                           type="button"
-                          className="font-hepta-slab h-9 md:h-12 text-sm md:text-lg text-white bg-white/10 border-2 border-white/10 rounded-full hover:text-[#FFE700] hover:bg-transparent hover:border-[#FFE700] cursor-pointer group relative z-50 pointer-events-auto"
+                          className="font-hepta-slab h-9 md:h-12 text-sm md:text-lg text-white bg-white/10 border-2 border-white/10 rounded-full hover:text-amber-200 hover:bg-transparent hover:border-amber-200 cursor-pointer group relative z-50 pointer-events-auto"
                           onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault();
                             e.stopPropagation();
@@ -118,7 +118,7 @@ export default function Services() {
                           <Button 
                             variant="outline"
                             size="lg"
-                            className="font-hepta-slab h-12 text-base md:text-lg text-white bg-white/10 border-2 border-white/10 rounded-full hover:text-[#FFE700] hover:bg-transparent hover:border-[#FFE700] cursor-pointer group pointer-events-auto"
+                            className="font-hepta-slab h-12 text-base md:text-lg text-white bg-white/10 border-2 border-white/10 rounded-full hover:text-amber-200 hover:bg-transparent hover:border-amber-200 cursor-pointer group pointer-events-auto"
                             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                               e.preventDefault();
                               e.stopPropagation();
@@ -155,7 +155,7 @@ export default function Services() {
                         <Button 
                           variant="outline"
                           size="default"
-                          className="font-hepta-slab h-9 text-sm text-white bg-white/10 border-2 border-white/10 rounded-full hover:text-[#FFE700] hover:bg-transparent hover:border-[#FFE700] cursor-pointer group pointer-events-auto"
+                          className="font-hepta-slab h-9 text-sm text-white bg-white/10 border-2 border-white/10 rounded-full hover:text-amber-200 hover:bg-transparent hover:border-amber-200 cursor-pointer group pointer-events-auto"
                           onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault();
                             e.stopPropagation();

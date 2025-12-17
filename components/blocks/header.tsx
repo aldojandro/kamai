@@ -69,7 +69,13 @@ export default function Header() {
     <div className={`bg-transparent fixed top-0 left-0 right-0 z-50 px-7 transition-all duration-300 ${hasScrolled ? 'backdrop-blur-sm' : ''}`}>
       <div className={`flex items-center justify-between py-4 border-b ${borderColorClass}`}>
         {/* Logo - appears on left */}
-        <div>
+        <div 
+          onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="cursor-pointer"
+        >
           <Image
             src="/logo/kamai-logo-dark.svg"
             alt="Kamai Logo"

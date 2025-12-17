@@ -3,6 +3,8 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Linkedin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface TeamMember {
   id: string;
@@ -10,6 +12,7 @@ interface TeamMember {
   name: string;
   role: string;
   href?: string;
+  linkedinUrl?: string;
 }
 
 export default function Team() {
@@ -19,14 +22,16 @@ export default function Team() {
       image: '/photos/mariano-headshot-transparent.png',
       name: 'Mariano Silva Sarria',
       role: 'Co-Founder & CEO',
-      href: '#'
+      href: '#',
+      linkedinUrl: 'https://www.linkedin.com/in/mariano--silva/'
     },
     {
       id: '2',
       image: '/photos/tati-headshot-transparent.png',
       name: 'Tatiana León Iriarte',
       role: 'Co-Founder & CTO',
-      href: '#'
+      href: '#',
+      linkedinUrl: 'https://www.linkedin.com/in/tatianaleon/'
     }
   ];
 
@@ -42,12 +47,12 @@ export default function Team() {
           {/* Title - aligned to left */}
           <div className="flex items-end w-full md:w-auto">
             <h2 className="font-hepta-slab font-semibold text-4xl leading-[0.9] md:text-6xl md:leading-16 text-white">
-              El equipo
+              Nuestro <br/> Equipo.
             </h2>
           </div>
           {/* Description - aligned to right, below title on mobile */}
           <div className="flex items-end justify-end w-full md:w-auto">
-            <p className="font-hepta-slab text-base md:text-lg text-gray-300 text-right w-full md:max-w-md">
+            <p className="font-hepta-slab text-lg md:text-lg text-gray-300 text-right pl-10 md:pl-0 max-w-3xs md:max-w-md">
               Empezar con IA puede ser abrumador.{' '}
               <span className="bg-amber-200 text-black font-medium px-1">Fundamos KAMAI para que no lo sea.</span>
             </p>
@@ -114,78 +119,99 @@ function TeamMemberCard({ member, index }: { member: TeamMember; index: number }
   }, [index]);
 
   return (
-    <Link
-      href={member.href || '#'}
-      className="group block"
-    >
-      <div ref={cardRef} className="relative w-full h-[240px] md:h-[360px] rounded-none overflow-hidden transition-colors bg-stone-200">
-        {/* Background: Pattern with parallax effect */}
-        <div
-          ref={patternRef}
-          className="absolute top-1/2 pointer-events-none"
-          style={{
-            zIndex: 0,
-            transition: 'transform 0.1s ease-out',
-            left: index === 0 ? '0' : 'auto',
-            right: index === 1 ? '0' : 'auto',
-          }}
-        >
-          <Image
-            src="/illustration/kamain-pattern.svg"
-            alt="Pattern"
-            width={160}
-            height={160}
-            className={`h-[240px] w-auto grayscale ${index === 0 ? 'opacity-20' : 'opacity-10'}`}
-          />
-        </div>
+    <div className="flex flex-col">
+      <Link
+        href={member.href || '#'}
+        className="group block"
+      >
+        <div ref={cardRef} className="relative w-full h-[280px] md:h-[360px] rounded-none overflow-hidden transition-colors bg-stone-200">
+          {/* Background: Pattern with parallax effect */}
+          <div
+            ref={patternRef}
+            className="absolute top-1/2 pointer-events-none"
+            style={{
+              zIndex: 0,
+              transition: 'transform 0.1s ease-out',
+              left: index === 0 ? '0' : 'auto',
+              right: index === 1 ? '0' : 'auto',
+            }}
+          >
+            <Image
+              src="/illustration/kamain-pattern.svg"
+              alt="Pattern"
+              width={160}
+              height={160}
+              className={`h-[240px] w-auto grayscale ${index === 0 ? 'opacity-20' : 'opacity-10'}`}
+            />
+          </div>
 
-        {/* Member image */}
-        {member.image && (
-          <>
-            <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 1 }}>
-              <Image
-                src={member.image}
-                alt={member.name}
-                width={360}
-                height={360}
-                className="max-w-[360px] w-full h-auto object-contain grayscale"
+          {/* Member image */}
+          {member.image && (
+            <>
+              <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 1 }}>
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={360}
+                  height={360}
+                  className="max-w-[360px] w-full h-auto object-contain grayscale"
+                />
+              </div>
+              {/* Grainy overlay effect above image */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  zIndex: 2,
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")`,
+                  backgroundRepeat: 'repeat',
+                  backgroundSize: '182px',
+                  opacity: 0.12,
+                }}
               />
-            </div>
-            {/* Grainy overlay effect above image */}
+            </>
+          )}
+
+          {/* Text content: Name and Role */}
+          <div
+            className="relative h-full flex flex-col justify-end"
+            style={{ zIndex: 20 }}
+          >
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                zIndex: 2,
-                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")`,
-                backgroundRepeat: 'repeat',
-                backgroundSize: '182px',
-                opacity: 0.12,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.05) 80%, transparent 100%)'
               }}
             />
-          </>
-        )}
-
-        {/* Text content: Name and Role */}
-        <div
-          className="relative h-full flex flex-col justify-end"
-          style={{ zIndex: 20 }}
-        >
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.05) 80%, transparent 100%)'
-            }}
-          />
-          <div className="relative w-full px-5 md:px-6 py-5 md:py-8">
-            <h3 className="font-hepta-slab text-lg md:text-xl font-semibold text-white">
-              {member.name}
-            </h3>
-            <span className="font-hepta-slab text-xs md:text-sm text-gray-300">
-              {member.role}
-            </span>
+            <div className="relative w-full px-5 md:px-6 py-5 md:py-8">
+              <h3 className="font-hepta-slab text-lg md:text-xl font-semibold text-white">
+                {member.name}
+              </h3>
+              <span className="font-hepta-slab text-xs md:text-sm font-semibold text-stone-100">
+                {member.role}
+              </span>
+              
+              {/* LinkedIn Button */}
+              <div className="mt-4">
+                <Button 
+                  variant="outline"
+                  size="sm"
+                  className="font-hepta-slab h-9 text-sm text-white bg-white/10 border-2 border-white/10 rounded-full hover:text-amber-200 hover:bg-transparent hover:border-amber-200 cursor-pointer group w-auto"
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (member.linkedinUrl && member.linkedinUrl !== '#') {
+                      window.open(member.linkedinUrl, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
+                >
+                  <Linkedin className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+                  LinkedIn
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
