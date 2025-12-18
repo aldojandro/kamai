@@ -1,6 +1,11 @@
 'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
+
 export default function Contact() {
+  const [isPhoneHoveredMobile, setIsPhoneHoveredMobile] = useState(false);
+  const [isPhoneHoveredDesktop, setIsPhoneHoveredDesktop] = useState(false);
   return (
     <section id="contacto" className="relative w-full bg-black">
       <div className="px-7 pt-24 pb-0 md:py-24">
@@ -18,14 +23,23 @@ export default function Contact() {
             <div className="flex flex-col items-start gap-4">
               <a
                 href="mailto:contacto@kamailab.com"
-                className="font-hepta-slab font-medium text-xl transition-opacity bg-[#FFE700] hover:bg-amber-100 text-black px-2"
+                className="font-hepta-slab font-medium text-lg transition-opacity text-[#FFE700] hover:bg-amber-100 hover:text-stone-950 px-2"
               >
                 contacto@kamailab.com
               </a>
               <a
                 href="tel:+51946169112"
-                className="font-hepta-slab font-medium text-xl hover:opacity-80 transition-opacity bg-[#FFE700] text-black px-2"
+                className="font-hepta-slab font-medium text-lg transition-opacity text-[#FFE700] hover:bg-amber-100 hover:text-stone-950 px-2 flex items-center gap-2"
+                onMouseEnter={() => setIsPhoneHoveredMobile(true)}
+                onMouseLeave={() => setIsPhoneHoveredMobile(false)}
               >
+                <Image
+                  src={isPhoneHoveredMobile ? "/logo/whatsapp-icon-stone-950.svg" : "/logo/whatsapp-icon-yellow.svg"}
+                  alt="WhatsApp"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 transition-all"
+                />
                 +51 946 169 112
               </a>
             </div>
@@ -62,14 +76,23 @@ export default function Contact() {
               <div className="flex flex-col items-start gap-4">
                 <a
                   href="mailto:contacto@kamailab.com"
-                  className="font-hepta-slab font-medium text-xl transition-opacity bg-[#FFE700] hover:bg-amber-100 text-black px-2"
+                  className="font-hepta-slab font-medium text-lg transition-opacity text-[#FFE700] hover:bg-amber-100 hover:text-stone-950 px-2"
                 >
                   contacto@kamailab.com
                 </a>
                 <a
                   href="tel:+51946169112"
-                  className="font-hepta-slab font-medium text-xl transition-opacity bg-[#FFE700] hover:bg-amber-100 text-black px-2"
+                  className="font-hepta-slab font-medium text-lg transition-opacity text-[#FFE700] hover:bg-amber-100 hover:text-stone-950 px-2 flex items-center gap-2"
+                  onMouseEnter={() => setIsPhoneHoveredDesktop(true)}
+                  onMouseLeave={() => setIsPhoneHoveredDesktop(false)}
                 >
+                  <Image
+                    src={isPhoneHoveredDesktop ? "/logo/whatsapp-icon-stone-950.svg" : "/logo/whatsapp-icon-yellow.svg"}
+                    alt="WhatsApp"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5 transition-all"
+                  />
                   +51 946 169 112
                 </a>
               </div>

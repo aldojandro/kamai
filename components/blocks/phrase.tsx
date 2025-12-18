@@ -64,7 +64,7 @@ export default function Phrase() {
             <div className="w-full [&_.blur-text]:inline! [&_.blur-text]:w-auto!">
               {/* @ts-expect-error - BlurText is a .jsx component with optional props that TypeScript incorrectly infers as required */}
               <BlurText
-                text="Trabajamos con equipos pequeños y empresas mid-size en Latinoamérica que quieren <b>usar IA para competir contra gigantes.</b> <br/><br/>En un mercado lleno de promesas vacías y demos bonitas, nosotros entregamos <b>resultados concretos</b> y priorizamos la transparencia ante todo."
+                text="Trabajamos con equipos pequeños y empresas mid-size en Latinoamérica que quieren <b>usar IA para competir contra gigantes.</b> <br/><br/>En un mercado lleno de promesas vacías y demos bonitas, nosotros entregamos <b>resultados concretos</b> y priorizamos la <b>transparencia</b> ante todo."
                 className="font-hepta-slab text-xl leading-7 md:text-4xl md:leading-11 text-stone-950 font-normal"
                 delay={10}
                 animateBy="words"
